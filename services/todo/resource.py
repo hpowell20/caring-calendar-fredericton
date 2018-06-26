@@ -9,3 +9,6 @@ class TodoSchema(ma.Schema):
     id = fields.String(required=True)
     title = fields.String(required=True)
     description = fields.String(required=False)
+
+
+todo_schema = TodoSchema()

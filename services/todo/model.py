@@ -1,5 +1,5 @@
 from pynamodb.models import Model
-from pynamodb.attributes import UnicodeAttribute, NumberAttribute
+from pynamodb.attributes import UnicodeAttribute, BooleanAttribute
 
 
 class TodoModel(Model):
@@ -9,4 +9,4 @@ class TodoModel(Model):
     id = UnicodeAttribute(hash_key=True)
     title = UnicodeAttribute()
     description = UnicodeAttribute(null=True)
-    is_complete = NumberAttribute(default=False)
+    is_complete = BooleanAttribute(default=False)

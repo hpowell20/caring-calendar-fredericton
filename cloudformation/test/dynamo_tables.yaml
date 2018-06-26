@@ -1,7 +1,7 @@
 ---
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
-  DynamoDBTodo:
+  DynamoDBUser:
     DeletionPolicy: Delete
     Properties:
       TableName: caring-fred-test-user
@@ -53,7 +53,7 @@ Outputs:
       Ref: DynamoDBUser
     Export:
       Name: caring-fred-test-DynamoDBUser
-  DynamoDBTodod:
+  DynamoDBTodos:
     Value:
       Ref: DynamoDBTodos
     Export:
