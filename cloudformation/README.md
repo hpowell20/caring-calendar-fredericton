@@ -15,4 +15,5 @@ The following outlines the steps used to create the required services for a new 
 ./s3.py -p {profile} -e {env}
 ./cloudfront.py -p {profile} -e {env}
 ./route53.py -p {profile} -e {env}
+./dynamo_tables.py -p {profile} -e {env}
 ```
