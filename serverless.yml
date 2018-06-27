@@ -89,14 +89,14 @@ functions:
           method: any
           path: /
           cors: true
-          # authorizer:
-            # arn: ${self:custom.env.user_pool_arn}
+          authorizer:
+            arn: ${self:custom.env.user_pool_arn}
       - http:
           method: any
           path: /{proxy+}
           cors: true
-          # authorizer:
-            # arn: ${self:custom.env.user_pool_arn}
+          authorizer:
+            arn: ${self:custom.env.user_pool_arn}
 
 resources:
   Resources:
@@ -113,32 +113,32 @@ resources:
           Ref: ApiGatewayRestApi
         StageName: ${self:provider.stage}
 
-#    DomainName:
-#      Type: AWS::ApiGateway::DomainName
-#      Properties:
-#        # CertificateArn: ${self:custom.env.cert_arn, self:custom.default_acm_cert_arn}
-#        CertificateArn: ${self:custom.default_acm_cert_arn}
-#        # DomainName: ${self:custom.env.record_set_name, self:custom.default_record_set_name}
-#        DomainName: ${self:custom.default_record_set_name}
-#
-#    DomainNameMapping:
-#      Type: AWS::ApiGateway::BasePathMapping
-#      Properties:
-#        DomainName:
-#          Ref: DomainName
-#        RestApiId:
-#          Ref: ApiGatewayRestApi
-#        Stage: ${self:provider.stage}
-#
-#    Route53:
-#      Properties:
-#        AliasTarget:
-#          DNSName:
-#            Fn::GetAtt: [ DomainName , DistributionDomainName ]
-#          HostedZoneId: Z2FDTNDATAQYW2
-#        Name:
-#          Ref: DomainName
-#        Type: A
-#        # HostedZoneName: ${self:custom.env.hosted_zone_name, self:custom.default_hosted_zone_name}
-#        HostedZoneName: ${self:custom.default_hosted_zone_name}
-#      Type: AWS::Route53::RecordSet
+    DomainName:
+      Type: AWS::ApiGateway::DomainName
+      Properties:
+        # CertificateArn: ${self:custom.env.cert_arn, self:custom.default_acm_cert_arn}
+        CertificateArn: ${self:custom.default_acm_cert_arn}
+        # DomainName: ${self:custom.env.record_set_name, self:custom.default_record_set_name}
+        DomainName: ${self:custom.default_record_set_name}
+
+    DomainNameMapping:
+      Type: AWS::ApiGateway::BasePathMapping
+      Properties:
+        DomainName:
+          Ref: DomainName
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        Stage: ${self:provider.stage}
+
+    Route53:
+      Properties:
+        AliasTarget:
+          DNSName:
+            Fn::GetAtt: [ DomainName , DistributionDomainName ]
+          HostedZoneId: Z2FDTNDATAQYW2
+        Name:
+          Ref: DomainName
+        Type: A
+        # HostedZoneName: ${self:custom.env.hosted_zone_name, self:custom.default_hosted_zone_name}
+        HostedZoneName: ${self:custom.default_hosted_zone_name}
+      Type: AWS::Route53::RecordSet
