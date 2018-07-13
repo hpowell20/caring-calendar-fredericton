@@ -1,0 +1,30 @@
+# Include this in the DynamoDB section of 'cfndsl_base.yaml'
+dynamodb:
+  user:
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+    ProvisionedThroughput:
+      ReadCapacityUnits: 5
+      WriteCapacityUnits: 1
+  todos:
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+  user_todo:
+    AttributeDefinitions:
+      - AttributeName: user_id
+        AttributeType: S
+      - AttributeName: todo_id
+        AttributeType: S
+    KeySchema:
+      - AttributeName: user_id
+        KeyType: HASH
+      - AttributeName: todo_id
+        KeyType: RANGE

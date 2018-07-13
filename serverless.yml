@@ -28,6 +28,10 @@ provider:
       Resource: '*'
     - Effect: Allow
       Action:
+        - cognito-idp:AdminInitiateAuth
+      Resource: '*'
+    - Effect: Allow
+      Action:
         - dynamodb:GetItem
         - dynamodb:DescribeTable
         - dynamodb:PutItem
@@ -77,6 +81,17 @@ custom:
     packRequirements: false
 
 functions:
+  login:
+    name: ${self:service}-${self:provider.stage}-api-login
+    handler: handlers/login.handler
+    environment:
+      COGNITO_USER_POOL_ID: ${self:custom.env.user_pool_id}
+      COGNITO_CLIENT_ID: ${self:custom.env.app_client_id}
+    events:
+      - http:
+          method: post
+          path: /api/login
+          cors: true
   api:
     name: ${self:service}-${self:provider.stage}-api
     handler: wsgi.handler
