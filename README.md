@@ -1,7 +1,6 @@
 # Civic Tech - Caring Calendar API #
 
-This project contains the back end APIs used by the Caring Calendar application.  The endpoints are
-agnostic to the client interface being used (React, Angular, iOS, Android).
+This is the baseline project to be used for developers to use when building serverless applications.  One example is a community application built for the Fredericton Civic Tech organization.  
 
 ## Functionality: ##
 
