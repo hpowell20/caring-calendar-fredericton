@@ -1,6 +1,7 @@
 # Civic Tech - Caring Calendar API #
 
-This is the baseline project to be used for developers to use when building serverless applications.  One example is a community application built for the Fredericton Civic Tech organization.  
+This project contains the back end APIs used by the Caring Calendar application.  The endpoints are
+agnostic to the client interface being used (React, Angular, iOS, Android).
 
 ## Functionality: ##
 
@@ -10,7 +11,7 @@ This is the baseline project to be used for developers to use when building serv
 
 ## Project Setup ##
 
-For the purpose of this project, NPM is used to install the serverless tools whereas pip is used to install runtime Python packages.
+NPM is used to install the serverless tools whereas pip is used to install runtime Python packages.
 
 ### NPM Dependencies ###
 
